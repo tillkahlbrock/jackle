@@ -1,0 +1,6 @@
+*~
+.vagrant*
+.vagrant/
+composer.phar
+vendor/
+
