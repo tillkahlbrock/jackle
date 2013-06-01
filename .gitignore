@@ -3,4 +3,4 @@
 .vagrant/
 composer.phar
 vendor/
-
+*.log
