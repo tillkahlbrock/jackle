@@ -3,7 +3,7 @@ Given /I am on the start page/ do
 end
 
 Then /^I should see "(.*)"$/ do |text|
-  assert !!(response_body =~ /#{Regexp.escape text}/m), response_body
+  assert_contain /#{Regexp.escape(text)}/m
 end
 
 When(/^I enter my username "([^"]*)"$/) do |username|
