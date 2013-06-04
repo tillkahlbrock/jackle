@@ -1,6 +1,8 @@
 Feature:
   Blahaha
-  
+
   Scenario:
     Given I am on the start page
-    Then I should see "Fooo"
+    When I enter my username "timmey"
+    And I submit the form
+    Then I should see "timmey"
