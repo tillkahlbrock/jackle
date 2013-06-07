@@ -3,6 +3,7 @@ Feature:
 
   Scenario:
     Given I am on the start page
-    When I enter my username "timmey"
+    When I enter my username "superCoolerUser"
     And I submit the form
-    Then I should see "timmey"
+    And goto the userlist
+    Then I should see "superCoolerUser"

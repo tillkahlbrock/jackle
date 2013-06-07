@@ -13,3 +13,7 @@ end
 When(/^I submit the form$/) do
   click_button "Register"
 end
+
+When(/^goto the userlist$/) do
+  visit "http://localhost:6666/user"
+end

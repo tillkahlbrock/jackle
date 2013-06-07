@@ -1,7 +1,9 @@
 <html>
     <body>
         <ul>
-            <li><?= $this->data['username'] ?></li>
+            <?php foreach($this->data['users'] as $user) { ?>
+            <li><?= $user->getName() ?></li>
+            <?php } ?>
         </ul>
     </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackle;
+namespace Jackle\Entity;
 
 /** @Entity */
-class Item
+class User
 {
     /**
      * @Id @Column(type="integer")
