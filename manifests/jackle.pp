@@ -1,12 +1,18 @@
+exec {'/usr/bin/apt-get update': }
+->
 package { 'apache2':
     ensure => present,
 }
 ->
 package {
-  "php5-mysql":
-    ensure  => present;
   "mysql-client":
     ensure  => present;
+  "php5-mysql":
+    ensure  => present;
+  "php5-cli":
+    ensure => present;
+  "libapache2-mod-php5":
+    ensure => present;
 }
 ->
 file { '/etc/apache2/sites-available/default':
