@@ -64,3 +64,9 @@ exec { "create db":
   path => ["/bin", "/usr/bin"],
   command => "mysqladmin -uroot -proot create jackle",
 }
+->
+exec { "create schema":
+  unless => "php /vagrant/bin/doctrine-cli.php orm:validate-schema",
+  path => ["/bin", "/usr/bin"],
+  command => "php /vagrant/bin/doctrine-cli.php orm:schema-tool:create",
+}
