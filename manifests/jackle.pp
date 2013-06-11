@@ -58,3 +58,9 @@ exec { "set-mysql-password":
   path => ["/bin", "/usr/bin"],
   command => "mysqladmin -uroot password root",
 }
+->
+exec { "create db":
+  unless => "mysql -uroot -proot jackle",
+  path => ["/bin", "/usr/bin"],
+  command => "mysqladmin -uroot -proot create jackle",
+}
