@@ -16,7 +16,7 @@ package {
 }
 ->
 file { '/etc/apache2/sites-available/default':
-    ensure => link,
+    ensure => present,
     source => '/vagrant/config/apache-default-site',
 }
 ->
@@ -42,4 +42,19 @@ service { 'apache2':
     ensure     => running,
     enable     => true,
     subscribe  => File['/etc/apache2/sites-available/default'],
+}
+
+package { "mysql-server":
+  ensure => present,
+}
+->
+service { "mysql":
+  enable => true,
+  ensure => running,
+}
+->
+exec { "set-mysql-password":
+  unless => "mysqladmin -uroot -proot status",
+  path => ["/bin", "/usr/bin"],
+  command => "mysqladmin -uroot password root",
 }
