@@ -7,14 +7,16 @@ use Jackle\Entity\User;
 $app = new \Slim\Slim();
 
 $app->get('/', function () use($app) {
+    $app->render('start.php');
+});
+
+$app->get('/form', function () use($app) {
     $app->render('form.php');
 });
 
 $app->post('/user', function () use($app, $entityManager) {
-    $username = $app->request()->params('Username');
-    $item = new \Jackle\Entity\User($username);
-    $entityManager->persist($item);
-    $entityManager->flush();
+    $params = $app->request()->params();
+    addUser($params);
 });
 
 $app->get(
@@ -27,5 +29,13 @@ $app->get(
 );
 
 $app->run();
+
+function addUser($params)
+{
+    /** @var Jackle\UserService\Boundary\Interactor $interactor */
+    $interactor = null; // dispatching to correct interactor
+
+    $interactor->execute($params);
+}
 
 ?>
