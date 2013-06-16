@@ -32,8 +32,10 @@ $app->run();
 
 function addUser($params)
 {
-    /** @var Jackle\UserService\Boundary\Interactor $interactor */
-    $interactor = null; // dispatching to correct interactor
+    /** @var Jackle\Interactor $interactor */
+    $interactor = new Jackle\UserService\Interactor\CreateUser(
+        new EmailService\Concrete();
+    );
 
     $interactor->execute($params);
 }
